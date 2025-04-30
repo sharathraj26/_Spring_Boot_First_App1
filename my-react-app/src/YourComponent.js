@@ -57,7 +57,7 @@ function YourComponent() {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <div id="user-data-display" style={{ marginTop: '20px' }}>
-        {email && <p>Email: <strong>{email}</strong></p>}
+        {email && <p>Email of the person you are trying : <strong>{email}</strong></p>}
         {password && <p>Password: <strong>{password}</strong></p>}
       </div>
     </div>

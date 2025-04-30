@@ -32,10 +32,10 @@ public class MyController {
         @GetMapping("/**")
         public ResponseEntity<?> redirect(HttpServletRequest request) {
             // Read the request URL after /api
-            String path = request.getRequestURI().replaceFirst("/", "");
+            String path = request.getRequestURI().replaceFirst("/api", "");
             String queryString = request.getQueryString();
 
-            String targetUrl = "https://leetcode.com" + path;
+            String targetUrl = "http://localhost:9001" + path;
             if (queryString != null) {
                 targetUrl += "?" + queryString;
             }
@@ -48,21 +48,13 @@ public class MyController {
 
     @PostMapping("/**")
     public ResponseEntity<?> redirectPost(HttpServletRequest request, @RequestBody String body) {
-        String path = request.getRequestURI().replaceFirst("/", "");
-        String targetUrl = "https://leetcode.com" + path;
-
+        String path = request.getRequestURI().replaceFirst("/api", "");
+        String targetUrl = "http://localhost:9001" + path;
         RestTemplate restTemplate = new RestTemplate();
-
-        // Create headers
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-
-        // Attach the body and headers
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
-
-        // Post to backend with body and headers
         ResponseEntity<String> response = restTemplate.postForEntity(targetUrl, entity, String.class);
-
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
     }
 

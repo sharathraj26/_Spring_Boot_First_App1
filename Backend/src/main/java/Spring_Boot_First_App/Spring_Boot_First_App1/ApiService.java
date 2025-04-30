@@ -11,7 +11,7 @@ public class ApiService {
     private RestTemplate restTemplate;
 
     public String callAppB() {
-        String url = "http://localhost:8080/api/Gets";
+        String url = "http://localhost:9001/api/Gets";
         return restTemplate.getForObject(url, String.class);
     }
 }

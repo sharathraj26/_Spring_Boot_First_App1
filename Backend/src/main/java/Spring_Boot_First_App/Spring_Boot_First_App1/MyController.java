@@ -28,6 +28,11 @@ public class MyController {
     }
 
 
+    @GetMapping("/hello")
+    public String callAppBApis() {
+        return "hello - Bhanu ";
+    }
+
 
         @GetMapping("/**")
         public ResponseEntity<?> redirect(HttpServletRequest request) {

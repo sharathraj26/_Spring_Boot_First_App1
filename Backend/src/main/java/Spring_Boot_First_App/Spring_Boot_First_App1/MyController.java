@@ -30,7 +30,7 @@ public class MyController {
 
     @GetMapping("/hello")
     public String callAppBApis() {
-        return "hello - Bhanu ";
+        return "hello - My spring boot App ";
     }
 
 
